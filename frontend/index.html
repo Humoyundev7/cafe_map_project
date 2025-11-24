@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cafe & Game Club Map</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <h1>☕🎮 Cafe & Game Club Map</h1>
+        <p>See how many seats are free right now.</p>
+      </header>
+
+      <div class="tabs">
+        <button id="user-tab" class="tab active">User View</button>
+        <button id="manager-tab" class="tab">Manager View</button>
+      </div>
+
+      <!-- USER VIEW -->
+      <section id="user-view" class="card">
+        <h2>User View</h2>
+        <p>Choose a place and see free seats.</p>
+
+        <div class="filter-row">
+          <label for="type-filter">Filter by type:</label>
+          <select id="type-filter">
+            <option value="all">All</option>
+            <option value="Cafe">Cafe</option>
+            <option value="Game Club">Game Club</option>
+          </select>
+        </div>
+
+        <div id="user-places" class="places-grid">
+          <!-- filled by JS -->
+        </div>
+      </section>
+
+      <!-- MANAGER VIEW -->
+      <section id="manager-view" class="card hidden">
+        <div class="manager-header">
+          <h2>Manager Panel</h2>
+          <button id="logout-btn" class="small-btn hidden">Log out</button>
+        </div>
+
+        <div id="login-section">
+          <p>Enter manager password to edit free seats.</p>
+          <form id="login-form" class="login-form">
+            <label>
+              Password:
+              <input type="password" id="password-input" />
+            </label>
+            <button type="submit">Log in</button>
+          </form>
+          <p class="hint">Demo password: <code>admin123</code></p>
+        </div>
+
+        <div id="manager-section" class="hidden">
+          <p>Update free seats for each place.</p>
+          <div id="manager-places" class="places-grid">
+            <!-- filled by JS -->
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <small>cafe_map_project · demo</small>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

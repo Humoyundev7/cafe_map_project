@@ -1,0 +1,171 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f4f4f4;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+.app {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  margin-bottom: 6px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.tab {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background: #f7f7f7;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #222;
+  color: #fff;
+  border-color: #222;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  margin-bottom: 16px;
+}
+
+.hidden {
+  display: none;
+}
+
+.filter-row {
+  margin-bottom: 12px;
+}
+
+.filter-row select {
+  margin-left: 8px;
+  padding: 4px 8px;
+}
+
+.places-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.place-card {
+  background: #fafafa;
+  border-radius: 10px;
+  padding: 10px 12px;
+  border: 1px solid #eee;
+}
+
+.place-card h3 {
+  margin: 0 0 4px 0;
+}
+
+.place-type {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.place-address {
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.place-seats {
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.status {
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.status.ok {
+  color: #0b874b;
+}
+
+.status.full {
+  color: #c0392b;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 260px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 4px 8px;
+}
+
+.login-form button {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.manager-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.small-btn {
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.manager-input {
+  width: 100%;
+  padding: 4px 8px;
+  margin-top: 4px;
+}
+
+.save-btn {
+  margin-top: 6px;
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: #555;
+}
