@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Anhor Coffee & Bakery",
+    "type": "Cafe",
+    "total_seats": 25,
+    "free_seats": 25,
+    "address": "Ahmad Donish, Yashnobod",
+    "lat": 41.330877,
+    "lon": 69.335044,
+    "open_time": "08:00",
+    "close_time": "23:00"
+  },
+  {
+    "id": 2,
+    "name": "Game On Esports Club",
+    "type": "Game Club",
+    "total_seats": 40,
+    "free_seats": 20,
+    "address": "Qo‘yliq 5, Yashnobod",
+    "lat": 41.314218,
+    "lon": 69.329901,
+    "open_time": "10:00",
+    "close_time": "05:00"
+  },
+  {
+    "id": 3,
+    "name": "Black Bear Kofi",
+    "type": "Cafe",
+    "total_seats": 20,
+    "free_seats": 5,
+    "address": "Ahmad Donish, Yashnobod",
+    "lat": 41.330597,
+    "lon": 69.337418,
+    "open_time": "09:00",
+    "close_time": "23:00"
+  },
+  {
+    "id": 4,
+    "name": "Coffee Boom",
+    "type": "Cafe",
+    "total_seats": 18,
+    "free_seats": 10,
+    "address": "Aviasozlar, Yashnobod",
+    "lat": 41.296298,
+    "lon": 69.28385,
+    "open_time": "08:00",
+    "close_time": "22:00"
+  },
+  {
+    "id": 5,
+    "name": "Toronto Lounge",
+    "type": "Cafe",
+    "total_seats": 30,
+    "free_seats": 17,
+    "address": "Bratsev street, Yashnobod",
+    "lat": 41.32482,
+    "lon": 69.33351,
+    "open_time": "12:00",
+    "close_time": "02:00"
+  },
+  {
+    "id": 6,
+    "name": "Cyber Zone Gaming",
+    "type": "Game Club",
+    "total_seats": 32,
+    "free_seats": 16,
+    "address": "Parkent street, Yashnobod",
+    "lat": 41.317187,
+    "lon": 69.343702,
+    "open_time": "00:00",
+    "close_time": "23:59"
+  }
+]

@@ -1,133 +1,204 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
   margin: 0;
-  background: #f4f4f4;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-}
-
-.app {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
+  padding: 0;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 20px;
-}
-
-.header h1 {
-  margin-bottom: 6px;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .tabs {
   display: flex;
-  gap: 10px;
-  margin-bottom: 16px;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .tab {
-  padding: 8px 16px;
-  border-radius: 999px;
-  border: 1px solid #ccc;
-  background: #f7f7f7;
+  padding: 10px 20px;
+  margin: 0 5px;
+  border: none;
   cursor: pointer;
+  background: #ddd;
+  border-radius: 6px;
+  font-weight: bold;
 }
 
 .tab.active {
-  background: #222;
-  color: #fff;
-  border-color: #222;
+  background: #4287f5;
+  color: white;
 }
 
 .card {
-  background: #fff;
+  margin: 20px auto;
+  max-width: 950px;
+  background: white;
+  padding: 20px;
   border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-  margin-bottom: 16px;
 }
 
 .hidden {
   display: none;
 }
 
-.filter-row {
-  margin-bottom: 12px;
-}
-
-.filter-row select {
-  margin-left: 8px;
-  padding: 4px 8px;
-}
-
 .places-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 15px;
 }
 
 .place-card {
   background: #fafafa;
+  padding: 14px;
   border-radius: 10px;
-  padding: 10px 12px;
-  border: 1px solid #eee;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
-.place-card h3 {
-  margin: 0 0 4px 0;
+.place-card.highlight {
+  background: #fff6b0;
+  transition: 0.6s;
 }
 
-.place-type {
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 4px;
-}
-
-.place-address {
-  font-size: 0.9rem;
-  margin-bottom: 4px;
-}
-
-.place-seats {
-  font-size: 0.9rem;
-  margin-bottom: 4px;
-}
-
-.status {
-  font-weight: 600;
-  margin-top: 4px;
-}
-
-.status.ok {
-  color: #0b874b;
-}
-
-.status.full {
-  color: #c0392b;
-}
-
-.login-form {
+.place-card-header {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  max-width: 260px;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.login-form input {
-  width: 100%;
-  padding: 4px 8px;
+.ok {
+  color: green;
 }
 
-.login-form button {
+.full {
+  color: red;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.small-btn {
   padding: 6px 10px;
-  border-radius: 8px;
+  border: none;
+  border-radius: 6px;
+  background: #4287f5;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.small-btn.secondary {
+  background: #888;
+}
+
+.small-btn:hover {
+  opacity: 0.9;
+}
+
+.active-btn {
+  box-shadow: 0 0 0 2px #ffeb3b;
+}
+
+.rating-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+.crowd-label {
+  font-size: 0.85rem;
+}
+
+.distance {
+  margin-top: 4px;
+  font-size: 0.85rem;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.card-actions button {
+  flex: 1;
+  padding: 6px;
+  border-radius: 6px;
   border: none;
   cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.card-actions .book-btn {
+  background: #4caf50;
+  color: white;
+}
+
+.card-actions .rate-btn {
+  background: #ff9800;
+  color: white;
+}
+
+.card-actions button:hover {
+  opacity: 0.9;
+}
+
+.fav-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.fav-btn.fav-on {
+  color: #ffd700;
+}
+
+.booking-card {
+  background: #fafafa;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.booking-card button {
+  margin-top: 6px;
+  margin-right: 6px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.booking-card .booking-confirm-btn {
+  background: #4caf50;
+  color: white;
+}
+
+.booking-card .booking-cancel-btn {
+  background: #f44336;
+  color: white;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 10px;
 }
 
 .manager-header {
@@ -136,36 +207,111 @@ body {
   align-items: center;
 }
 
-.small-btn {
-  padding: 4px 10px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-}
-
-.manager-input {
-  width: 100%;
-  padding: 4px 8px;
-  margin-top: 4px;
-}
-
-.save-btn {
-  margin-top: 6px;
-  width: 100%;
-  padding: 6px 10px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
+.login-form input {
+  padding: 6px;
+  margin-right: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
 .footer {
   text-align: center;
-  margin-top: 16px;
   font-size: 0.8rem;
-  color: #777;
+  padding: 10px;
+  color: #666;
 }
 
-.hint {
+#map {
+  width: 100%;
+  height: 500px;
+  border-radius: 12px;
+  margin-top: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* MODALS */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 90;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal.hidden,
+.modal-backdrop.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 16px 18px;
+  border-radius: 12px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.form-row {
+  margin-bottom: 10px;
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+  width: 100%;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 4px;
+  box-sizing: border-box;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.rating-history {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 6px;
+  font-size: 0.85rem;
+}
+
+.rating-item {
+  border-bottom: 1px solid #eee;
+  padding: 4px 0;
+}
+
+.rating-date {
+  color: #777;
   font-size: 0.8rem;
-  color: #555;
+}
+
+/* ADMIN TABLE */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.admin-table th,
+.admin-table td {
+  border: 1px solid #ddd;
+  padding: 6px 8px;
+}
+
+.admin-table th {
+  background: #f0f0f0;
 }

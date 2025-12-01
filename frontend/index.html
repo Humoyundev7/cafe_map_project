@@ -2,25 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Cafe & Game Club Map</title>
+    <title>Cafe Map — Tashkent Yashnobod</title>
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Yandex Maps API: put your real API key instead of <YOUR_YANDEX_API_KEY> -->
+    <script
+      src="https://api-maps.yandex.ru/2.1/?apikey=<YOUR_YANDEX_API_KEY>&lang=en_US"
+      type="text/javascript"
+    ></script>
   </head>
+
   <body>
     <div class="app">
       <header class="header">
-        <h1>☕🎮 Cafe & Game Club Map</h1>
-        <p>See how many seats are free right now.</p>
+        <h1>☕🎮 Tashkent Cafe & Game Map</h1>
+        <p>Live seats, bookings, ratings & real Yashnobod map</p>
       </header>
 
       <div class="tabs">
         <button id="user-tab" class="tab active">User View</button>
-        <button id="manager-tab" class="tab">Manager View</button>
+        <button id="manager-tab" class="tab">Manager / Admin</button>
       </div>
 
       <!-- USER VIEW -->
       <section id="user-view" class="card">
         <h2>User View</h2>
-        <p>Choose a place and see free seats.</p>
 
         <div class="filter-row">
           <label for="type-filter">Filter by type:</label>
@@ -29,43 +35,181 @@
             <option value="Cafe">Cafe</option>
             <option value="Game Club">Game Club</option>
           </select>
+
+          <button id="near-me-btn" class="small-btn">📍 Near me</button>
+          <button id="clear-near-me-btn" class="small-btn secondary">
+            Reset
+          </button>
+          <button id="favorites-toggle" class="small-btn secondary">
+            ★ Favorites
+          </button>
         </div>
 
-        <div id="user-places" class="places-grid">
-          <!-- filled by JS -->
+        <!-- NEW: route mode + ETA -->
+        <div class="route-controls">
+          <div class="route-mode-buttons">
+            <button
+              id="route-walk-btn"
+              class="small-btn secondary active-btn"
+              type="button"
+            >
+              🚶 Walk
+            </button>
+            <button
+              id="route-drive-btn"
+              class="small-btn secondary"
+              type="button"
+            >
+              🚗 Drive
+            </button>
+          </div>
+          <div id="route-eta" class="route-eta">
+            No route selected
+          </div>
         </div>
+
+        <p class="hint">
+          Tap a card to center map & build route. Use “Book” to reserve and
+          “Rate / I'm here now” to give 1–5 rating and mark busy / free / normal.
+        </p>
+
+        <div id="user-places" class="places-grid"></div>
       </section>
 
-      <!-- MANAGER VIEW -->
+      <!-- MANAGER / ADMIN VIEW -->
       <section id="manager-view" class="card hidden">
         <div class="manager-header">
-          <h2>Manager Panel</h2>
+          <h2>Manager / Admin Panel</h2>
           <button id="logout-btn" class="small-btn hidden">Log out</button>
         </div>
 
+        <!-- Login -->
         <div id="login-section">
-          <p>Enter manager password to edit free seats.</p>
+          <p>Manager Login:</p>
           <form id="login-form" class="login-form">
-            <label>
-              Password:
-              <input type="password" id="password-input" />
-            </label>
+            <input
+              type="text"
+              id="username-input"
+              placeholder="Username"
+              required
+            />
+            <input
+              type="password"
+              id="password-input"
+              placeholder="Password"
+              required
+            />
             <button type="submit">Log in</button>
           </form>
-          <p class="hint">Demo password: <code>admin123</code></p>
+          <p class="hint">
+            Example: <code>anhor / anhor123</code>, <code>gameon / gameon123</code>
+          </p>
         </div>
 
+        <!-- Manager section -->
         <div id="manager-section" class="hidden">
-          <p>Update free seats for each place.</p>
-          <div id="manager-places" class="places-grid">
-            <!-- filled by JS -->
-          </div>
+          <h3>Your place</h3>
+          <div id="manager-places" class="places-grid"></div>
+
+          <h3>Bookings</h3>
+          <div id="manager-bookings"></div>
+        </div>
+
+        <!-- Admin section -->
+        <div id="admin-section" class="hidden">
+          <h3>Admin overview</h3>
+          <div id="admin-overview"></div>
         </div>
       </section>
 
+      <h2>📍 Map</h2>
+      <div class="map-wrapper">
+        <div id="map"></div>
+        <!-- NEW: Focus on me button -->
+        <button id="focus-me-btn" class="floating-btn" type="button">
+          🎯
+        </button>
+      </div>
+
       <footer class="footer">
-        <small>cafe_map_project · demo</small>
+        <small>cafe_map_project — Yashnobod Edition</small>
       </footer>
+    </div>
+
+    <!-- Backdrop -->
+    <div id="modal-backdrop" class="backdrop hidden"></div>
+
+    <!-- BOOKING MODAL -->
+    <div id="booking-modal" class="modal hidden">
+      <div class="modal-content">
+        <h3>Book a table</h3>
+        <form id="booking-form">
+          <label>
+            Your name:
+            <input type="text" id="booking-name" required />
+          </label>
+          <label>
+            People:
+            <input type="number" id="booking-people" min="1" max="20" required />
+          </label>
+          <label>
+            Time:
+            <input type="time" id="booking-time" required />
+          </label>
+          <div class="modal-actions">
+            <button type="submit">Confirm booking</button>
+            <button type="button" id="booking-cancel">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- RATING MODAL -->
+    <div id="rating-modal" class="modal hidden">
+      <div class="modal-content">
+        <h3>Rate this place / I'm here now</h3>
+        <form id="rating-form">
+          <label>
+            Rating (1–5):
+            <select id="rating-select" required>
+              <option value="">Choose...</option>
+              <option value="1">1 - Bad</option>
+              <option value="2">2</option>
+              <option value="3">3 - OK</option>
+              <option value="4">4</option>
+              <option value="5">5 - Great</option>
+            </select>
+          </label>
+
+          <label>
+            Status now:
+            <select id="status-select" required>
+              <option value="">Choose...</option>
+              <option value="free">🟢 Free</option>
+              <option value="normal">🙂 Normal</option>
+              <option value="busy">🔥 Busy</option>
+            </select>
+          </label>
+
+          <label>
+            Your name (optional):
+            <input type="text" id="rating-name" />
+          </label>
+
+          <label>
+            Comment (optional):
+            <textarea id="rating-comment" rows="3"></textarea>
+          </label>
+
+          <div class="modal-actions">
+            <button type="submit">Send</button>
+            <button type="button" id="rating-cancel">Cancel</button>
+          </div>
+        </form>
+
+        <h4>Recent feedback</h4>
+        <div id="rating-history" class="rating-history"></div>
+      </div>
     </div>
 
     <script src="script.js"></script>
