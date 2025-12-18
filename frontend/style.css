@@ -1,3 +1,30 @@
+/* This rule is what actually hides the modal */
+.hidden {
+  display: none !important;
+}
+
+/* Optional: Ensure the backdrop covers the screen correctly when NOT hidden */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  /* Add other styling as needed */
+}
 * {
   box-sizing: border-box;
 }
