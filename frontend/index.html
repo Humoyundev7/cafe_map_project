@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <title>Cafe & Game Map — Yashnobod</title>
 
-    <!-- Font -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
@@ -12,7 +11,6 @@
 
     <link rel="stylesheet" href="style.css" />
 
-    <!-- Yandex Maps -->
     <script
       src="https://api-maps.yandex.ru/2.1/?apikey=<YOUR_YANDEX_API_KEY>&lang=en_US"
       type="text/javascript"
@@ -31,9 +29,7 @@
 
         <div class="hero-actions">
           <button id="hero-explore" class="primary-btn">Explore map</button>
-          <button id="hero-manager" class="secondary-btn">
-            Manager login
-          </button>
+          <button id="hero-manager" class="secondary-btn">Manager login</button>
         </div>
       </div>
     </header>
@@ -59,19 +55,14 @@
         </label>
 
         <button id="near-me-btn" class="small-btn">📍 Near me</button>
-        <button id="clear-near-me-btn" class="small-btn secondary">
-          Reset
-        </button>
+        <button id="clear-near-me-btn" class="small-btn secondary">Reset</button>
         <button id="favorites-toggle" class="small-btn secondary">
           ★ Favorites
         </button>
       </div>
 
       <div class="route-controls">
-        <button
-          id="route-walk-btn"
-          class="small-btn secondary active-btn"
-        >
+        <button id="route-walk-btn" class="small-btn secondary active-btn">
           🚶 Walk
         </button>
         <button id="route-drive-btn" class="small-btn secondary">
@@ -81,8 +72,7 @@
       </div>
 
       <p class="hint">
-        Click a card to focus the map & build a route. Book tables or rate places
-        in real time.
+        Click a card to focus the map & build a route. Book tables or rate places.
       </p>
 
       <div id="user-places" class="places-grid"></div>
@@ -138,6 +128,7 @@
     <!-- MODALS -->
     <div id="modal-backdrop" class="backdrop hidden"></div>
 
+    <!-- BOOKING MODAL -->
     <div id="booking-modal" class="modal hidden">
       <div class="modal-content">
         <h3>Book a table</h3>
@@ -147,11 +138,11 @@
             id="booking-people"
             type="number"
             min="1"
-            max="20"
             placeholder="People"
             required
           />
           <input id="booking-time" type="time" required />
+
           <div class="modal-actions">
             <button type="submit">Confirm</button>
             <button type="button" id="booking-cancel">Cancel</button>
@@ -160,6 +151,7 @@
       </div>
     </div>
 
+    <!-- RATING MODAL -->
     <div id="rating-modal" class="modal hidden">
       <div class="modal-content">
         <h3>Rate this place</h3>
