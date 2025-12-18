@@ -886,9 +886,7 @@ function showRouteToPlace(place) {
     })
     .catch((err) => {
       console.error("Yandex routing failed:", err);
-      alert(
-        "Road navigation unavailable right now. Showing straight line instead."
-      );
+
       drawSimpleRoute(place);
       updateRouteEta();
     });
